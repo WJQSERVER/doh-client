@@ -4,6 +4,7 @@ import (
 	"archive/tar"
 	"bytes"
 	"compress/gzip"
+	"context"
 	"encoding/binary"
 	"fmt"
 	"io"
@@ -150,8 +151,16 @@ func main() {
 }*/
 
 func Requst2DOH(config *config.Config, request []byte) ([]byte, error) {
+	// 创建自定义 HTTP 客户端
+	transport := &http.Transport{
+		DialContext: func(ctx context.Context, network, addr string) (net.Conn, error) {
+			return net.Dial("tcp", config.DohServerIP+":443")
+		},
+	}
 	// 创建 HTTP 客户端
-	client := &http.Client{}
+	client := &http.Client{
+		Transport: transport,
+	}
 
 	// 创建 HTTP 请求
 	req, err := http.NewRequest("POST", config.DohServer, bytes.NewReader(request))

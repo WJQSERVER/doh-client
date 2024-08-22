@@ -4,6 +4,7 @@ After=network.target
 
 [Service]
 ExecStart=/root/data/doh-client/doh-client
+WorkingDirectory=/root/data/doh-client
 Restart=always
 User=root
 Group=root

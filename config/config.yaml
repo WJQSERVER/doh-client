@@ -1,5 +1,7 @@
 listen_addr: 0.0.0.0
 dns_addr: :53
 doh_server: https://dns.cloudflare.com/dns-query
+doh_server_host: dns.cloudflare.com
+doh_server_ip: 1.1.1.1
 log_path: ./log/doh-client.log
 max_log_size: 52428800
