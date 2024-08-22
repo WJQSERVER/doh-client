@@ -8,9 +8,9 @@ Requires=network-online.target
 Type=notify
 User=root
 Group=root
-ExecStart=/usr/bin/doh-client
+ExecStart=/root/data/doh-client/doh-client
 Restart=on-failure
-WorkingDirectory=/usr/bin
+WorkingDirectory=/root/data/doh-client
 
 [Install]
 WantedBy=multi-user.target
