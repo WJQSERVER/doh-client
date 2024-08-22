@@ -17,6 +17,7 @@ rm -rf /root/data/doh-client.tar.gz
 
 #设置权限
 chmod +x /root/data/doh-client/doh-client
+chown root:root /root/data/doh-client/doh-client
 
 #拉取配置文件
 mkdir -p /root/data/doh-client/config
