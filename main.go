@@ -13,6 +13,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"doh-client/config"
@@ -154,7 +155,16 @@ func Requst2DOH(config *config.Config, request []byte) ([]byte, error) {
 	// 创建自定义 HTTP 客户端
 	transport := &http.Transport{
 		DialContext: func(ctx context.Context, network, addr string) (net.Conn, error) {
-			return net.Dial("tcp", config.DohServerIP+":443")
+			dialer := &net.Dialer{
+				Timeout: 5 * time.Second, // 设置连接超时时间
+			}
+			// 检查是否是 IPv6 地址，并添加方括号
+			if strings.Contains(config.DohServerIP, ":") {
+				addr = "[" + config.DohServerIP + "]:443"
+			} else {
+				addr = config.DohServerIP + ":443"
+			}
+			return dialer.DialContext(ctx, "tcp", addr)
 		},
 	}
 	// 创建 HTTP 客户端
