@@ -1,0 +1,21 @@
+[Unit]
+Description=DoH-Client
+Documentation=https://github.com/WJQSERVER/doh-client
+After=network.target network-online.target
+Requires=network-online.target
+
+[Service]
+Type=notify
+User=root
+Group=root
+ExecStart=/usr/bin/doh-client
+Restart=on-failure
+WorkingDirectory=/usr/bin
+TimeoutStopSec=5s
+LimitNOFILE=1048576
+PrivateTmp=true
+ProtectSystem=full
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target
