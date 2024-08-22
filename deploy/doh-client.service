@@ -1,16 +1,12 @@
 [Unit]
 Description=DoH-Client
-Documentation=https://github.com/WJQSERVER/doh-client
-After=network.target network-online.target
-Requires=network-online.target
+After=network.target
 
 [Service]
-Type=notify
+ExecStart=/root/data/doh-client/doh-client
+Restart=always
 User=root
 Group=root
-ExecStart=/root/data/doh-client/doh-client
-Restart=on-failure
-WorkingDirectory=/root/data/doh-client
 
 [Install]
 WantedBy=multi-user.target

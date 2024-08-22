@@ -19,6 +19,8 @@ rm -rf /root/data/doh-client.tar.gz
 chmod +x /root/data/doh-client/doh-client
 
 #拉取配置文件
+mkdir -p /root/data/doh-client/config
+mkdir -p /root/data/doh-client/log
 wget -O /root/data/doh-client/config/config.yaml https://raw.githubusercontent.com/WJQSERVER/doh-client/main/config/config.yaml
 
 #拉取systemd service文件
