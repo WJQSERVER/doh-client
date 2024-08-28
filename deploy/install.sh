@@ -22,7 +22,10 @@ chown root:root /root/data/doh-client/doh-client
 #拉取配置文件
 mkdir -p /root/data/doh-client/config
 mkdir -p /root/data/doh-client/log
-wget -O /root/data/doh-client/config/config.yaml https://raw.githubusercontent.com/WJQSERVER/doh-client/main/config/config.yaml
+#检测配置是否已存在
+if [ ! -f /root/data/doh-client/config/config.yaml ]; then
+  wget -O /root/data/doh-client/config/config.yaml https://raw.githubusercontent.com/WJQSERVER/doh-client/main/config/config.yaml
+fi
 
 #拉取systemd service文件
 wget -O /etc/systemd/system/doh-client.service https://raw.githubusercontent.com/WJQSERVER/doh-client/main/deploy/doh-client.service
