@@ -11,8 +11,9 @@ mkdir -p /root/data/doh-client
 VERSION=$(curl -s https://raw.githubusercontent.com/WJQSERVER/doh-client/main/VERSION)
 wget -O /root/data/doh-client.tar.gz https://github.com/WJQSERVER/doh-client/releases/download/$VERSION/doh-client-linux-amd64.tar.gz
 
-#解压并移动到/usr/bin目录
+#解压并移动到指定位置
 tar -zxvf /root/data/doh-client.tar.gz -C /root/data/doh-client
+mv /root/data/doh-client/doh-client-linux-amd64 /root/data/doh-client/doh-client
 rm -rf /root/data/doh-client.tar.gz
 
 #设置权限
