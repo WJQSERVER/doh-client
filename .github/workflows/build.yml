@@ -22,7 +22,7 @@ jobs:
         env:
           GOOS: ${{ matrix.goos }}
           GOARCH: ${{ matrix.goarch }}
-        run: go build -o doh-client-${{matrix.goos}}-${{matrix.goarch}} ./main.go
+        run: go build -o doh-client-${{matrix.goos}}-${{matrix.goarch}} -ldflags "-linkmode external -extldflags -static" ./main.go
       - name: Package
         env:
           GOOS: ${{ matrix.goos }}
