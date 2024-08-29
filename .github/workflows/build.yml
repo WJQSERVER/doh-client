@@ -34,7 +34,7 @@ jobs:
         with:
           name: ${{ env.VERSION }}
           artifacts: ./doh-client*.tar.gz, ./doh-client*
-          token: ${{ secrets.REPO_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ env.VERSION }}
           allowUpdates: true
         env:
